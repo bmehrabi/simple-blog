@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { ReactElement } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { QueryClientProvider } from '@tanstack/react-query';
+import queryClient from '@app/api/queryClient';
+import MainLayout from '@app/site/mainLayout';
+import BlogPage from '@app/site/pages/blogPage';
+import AdminLayout from '@app/admin/adminLayout';
+import PostsPage from '@app/admin/pages/posts/postsPage';
+import CreatePostPage from '@app/admin/pages/posts/createPostPage';
+import PostDetailsPage from '@app/site/pages/PostDetailsPage';
+import AboutPage from '@app/site/pages/AboutPage';
+import ContactPage from '@app/site/pages/ContactPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = (): ReactElement => (
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <Routes>
+        {/* Public routes */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<BlogPage />} />
+          <Route path="/post/:id" element={<PostDetailsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Route>
+        {/* Admin routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="posts" element={<PostsPage />} />
+          <Route path="posts/create" element={<CreatePostPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </QueryClientProvider>
+);
 
 export default App;
