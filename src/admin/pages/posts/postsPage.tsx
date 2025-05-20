@@ -1,28 +1,16 @@
 import React, { ReactElement } from 'react';
-import { Col, Row } from 'antd';
-import usePosts from '@app/api/posts/usePosts';
-import HeaderBreadcrumb from '@app/admin/components/headerBreadcrumb';
-import { PostType } from '@app/api/models/Post';
-import Post from '@app/shared/components/post';
+import { Col, Row, Typography } from 'antd';
+import ListPosts from '@app/admin/components/posts/listPosts';
 
 const PostsPage = (): ReactElement => {
-  const { data: posts, isLoading, error } = usePosts();
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error loading posts.</p>;
-
   return (
     <>
-      <HeaderBreadcrumb items={[{ link: '/admin/posts', title: 'Posts' }]} />
-      <Row>
-        {posts?.map(
-          (post: PostType): ReactElement => (
-            <Col key={post.id} span={12}>
-              <Post post={post} />
-            </Col>
-          ),
-        )}
+      <Row justify="start">
+        <Col>
+          <Typography.Title>Posts</Typography.Title>
+        </Col>
       </Row>
+      <ListPosts />
     </>
   );
 };

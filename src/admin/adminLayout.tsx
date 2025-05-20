@@ -4,7 +4,7 @@ import { Content, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
 import Logo from '@app/shared/components/logo';
 import BlogFooter from '@app/shared/components/footer';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 import SidebarMenu from './components/sidebar/Menu';
 
@@ -25,14 +25,20 @@ const AdminLayout = (): ReactElement => {
   return (
     <StyledLayout>
       <Sider collapsible collapsed={collapsed} onCollapse={(value): void => setCollapsed(value)}>
-        <Logo>Simple Blog</Logo>
+        <Logo>
+          <Link to="/">Simple Blog</Link>
+        </Logo>
         <SidebarMenu />
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <StyledContent>
           <main>
-            <Outlet />
+            <Layout>
+              <Content style={{ padding: 32, minHeight: 600 }}>
+                <Outlet />
+              </Content>
+            </Layout>
           </main>
           <BlogFooter />
         </StyledContent>

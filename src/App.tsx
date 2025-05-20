@@ -10,6 +10,8 @@ import CreatePostPage from '@app/admin/pages/posts/createPostPage';
 import PostDetailsPage from '@app/site/pages/PostDetailsPage';
 import AboutPage from '@app/site/pages/AboutPage';
 import ContactPage from '@app/site/pages/ContactPage';
+import EditPostPage from '@app/admin/pages/posts/editPostPage';
+import HomePage from '@app/admin/pages/posts/HomePage';
 
 const App = (): ReactElement => (
   <QueryClientProvider client={queryClient}>
@@ -24,8 +26,10 @@ const App = (): ReactElement => (
         </Route>
         {/* Admin routes */}
         <Route path="/admin" element={<AdminLayout />}>
+          <Route path="home" element={<HomePage />} />
           <Route path="posts" element={<PostsPage />} />
-          <Route path="posts/create" element={<CreatePostPage />} />
+          <Route path="post/create" element={<CreatePostPage />} />
+          <Route path="post/edit/:id" element={<EditPostPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
