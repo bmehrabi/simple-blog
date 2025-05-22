@@ -11,4 +11,8 @@ export default defineConfig({
       '@app': path.resolve(__dirname, 'src'),
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+  },
 })
