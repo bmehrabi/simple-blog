@@ -2,6 +2,7 @@ export interface PostType {
   id: number;
   title: string;
   description: string;
+  numberOfComments: number;
   createdAt: string;
   image: {
     url?: string;

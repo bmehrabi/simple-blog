@@ -4,22 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactElement, ReactNode } from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import usePost from '@app/api/posts/usePost';
+import getTestPost from '@app/testFactories/PostFactory';
 
 vi.mock('axios');
 
 describe('usePost', () => {
-  const mockedPost: PostType = {
-    id: 1,
-    title: 'title',
-    description: 'description',
-    createdAt: '',
-    author: {
-      avatarUrl: '',
-      name: 'Babak',
-    },
-    image: {},
-    publishedDate: '',
-  };
+  const mockedPost: PostType = getTestPost();
   const queryClient = new QueryClient();
   const wrapper = ({ children }: { children: ReactNode }): ReactElement => (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>

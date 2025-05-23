@@ -4,21 +4,11 @@ import { ReactElement, ReactNode } from 'react';
 import { renderHook, waitFor } from '@testing-library/react';
 import * as apis from '@app/api/posts/apis';
 import queryClientModule from '@app/api/queryClient';
+import getTestPost from '@app/testFactories/PostFactory';
 import useCreatePost from './useCreatePost';
 
 describe('useCreatePost', () => {
-  const mockedPost: PostType = {
-    id: 1,
-    title: 'title',
-    description: 'description',
-    createdAt: '',
-    author: {
-      avatarUrl: '',
-      name: 'Babak',
-    },
-    image: {},
-    publishedDate: '',
-  };
+  const mockedPost: PostType = getTestPost();
   const queryClient = new QueryClient();
   const wrapper = ({ children }: { children: ReactNode }): ReactElement => (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
