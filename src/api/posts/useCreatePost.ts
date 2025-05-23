@@ -1,26 +1,15 @@
-import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
-import { PostType } from '@app/api/models/Post';
-import { API_URL_POSTS } from '@app/constants';
+import { useMutation, UseMutationResult } from '@tanstack/react-query';
 import queryClient from '@app/api/queryClient';
 import QUERY_KEYS from '@app/api/queryKeys';
+import uploadPost from '@app/api/posts/apis';
+import { PostType } from '@app/api/models/Post';
 
-const uploadPost = async (formData: FormData): Promise<PostType> => {
-  const response = await axios.post(API_URL_POSTS, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-
-  return response.data;
-};
-
-const useCreatePost = () => {
+const useCreatePost = (): UseMutationResult<PostType, never, FormData> => {
   return useMutation({
     mutationFn: uploadPost,
     onSuccess: async (): Promise<void> => {
       await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
-    }
+    },
   });
 };
 
