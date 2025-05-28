@@ -19,7 +19,9 @@ const ContactPage = (): ReactElement => {
       <Title level={2}>Contact</Title>
 
       <Paragraph>
-        If you have any <Text strong>questions</Text>, <Text strong>suggestions</Text>, or just want to say hello — feel free to reach out! I'm always happy to connect with fellow developers and learners.
+        If you have any <Text strong>questions</Text>, <Text strong>suggestions</Text>, or just want
+        to say hello — feel free to reach out! I&#39;m always happy to connect with fellow
+        developers and learners.
       </Paragraph>
 
       <Space direction="vertical" size="middle">
