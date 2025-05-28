@@ -19,18 +19,14 @@ const AboutPage = (): ReactElement => {
       <Title level={2}>About This Project</Title>
 
       <Paragraph>
-        This repository is the official companion code for the{' '}
-        <Text strong>Udemy course</Text>:
+        This repository is the official companion code for the <Text strong>Udemy course</Text>:
       </Paragraph>
 
-      <Title level={4}>
-        {COURSE_NAME}
-      </Title>
+      <Title level={4}>{COURSE_NAME}</Title>
 
       <Paragraph>
-        The goal of this course is to help developers master testing strategies
-        in modern React applications using industry-standard tools and
-        techniques. Throughout the course, we cover:
+        The goal of this course is to help developers master testing strategies in modern React
+        applications using industry-standard tools and techniques. Throughout the course, we cover:
       </Paragraph>
 
       <ul>
@@ -49,9 +45,8 @@ const AboutPage = (): ReactElement => {
       <Divider />
 
       <Paragraph>
-        This codebase serves as a hands-on reference, demonstrating real-world
-        examples and testing scenarios that are explained in detail throughout
-        the course.
+        This codebase serves as a hands-on reference, demonstrating real-world examples and testing
+        scenarios that are explained in detail throughout the course.
       </Paragraph>
 
       <Paragraph type="secondary">
