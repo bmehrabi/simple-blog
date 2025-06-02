@@ -15,3 +15,12 @@ if (typeof window.matchMedia !== 'function') {
     };
   };
 }
+
+// Add this in jest.setup.js or at the top of your test file
+window.getComputedStyle = (_elt: Element, pseudoElt: string | null | undefined) => ({
+  getPropertyValue: (prop: string): string => {
+    if (prop === 'display') return 'block';
+
+    return '';
+  },
+});
